@@ -19,6 +19,9 @@ resource "aws_s3_bucket" "data" {
     git_repo             = "terragoat"
     yor_trace            = "0874007d-903a-4b4c-945f-c9c233e13243"
   })
+  versioning {
+    enabled = true
+  }
 }
 
 resource "aws_s3_bucket_object" "data_object" {
@@ -61,6 +64,9 @@ resource "aws_s3_bucket" "financials" {
     yor_trace            = "0e012640-b597-4e5d-9378-d4b584aea913"
   })
 
+  versioning {
+    enabled = true
+  }
 }
 
 resource "aws_s3_bucket" "operations" {
