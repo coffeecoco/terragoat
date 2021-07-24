@@ -20,6 +20,7 @@ resource "google_container_cluster" "workload_cluster" {
     }
   }
   min_master_version = "1.12"
+  enable_binary_authorization = true
 }
 
 resource google_container_node_pool "custom_node_pool" {
