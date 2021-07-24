@@ -24,6 +24,9 @@ resource "google_container_cluster" "workload_cluster" {
       node_metadata = "GKE_METADATA_SERVER"
     }
   }
+  enable_intranode_visibility = true
+  min_master_version = "1.12"
+  enable_binary_authorization = true
 }
 
 resource google_container_node_pool "custom_node_pool" {
@@ -36,6 +39,8 @@ resource google_container_node_pool "custom_node_pool" {
   node_config {
     workload_metadata_config {
       node_metadata = "GKE_METADATA_SERVER"
+    shielded_instance_config {
+      enable_secure_boot = true
     }
   }
 }
