@@ -18,7 +18,6 @@ resource "aws_db_instance" "default" {
   storage_encrypted       = false
   skip_final_snapshot     = true
   monitoring_interval     = 0
-  publicly_accessible     = true
 
   tags = merge({
     Name        = "${local.resource_prefix.value}-rds"
@@ -38,6 +37,7 @@ resource "aws_db_instance" "default" {
   lifecycle {
     ignore_changes = ["password"]
   }
+  multi_az = true
 }
 
 resource "aws_db_option_group" "default" {
@@ -410,6 +410,7 @@ EOF
     yor_trace            = "f7999d4e-c983-43ee-bd88-7903a6f8483e"
   })
   ebs_optimized = true
+  monitoring = true
 }
 
 output "db_app_public_dns" {
