@@ -19,6 +19,7 @@ resource "google_container_cluster" "workload_cluster" {
       cidr_block = "0.0.0.0/0"
     }
   }
+  enable_shielded_nodes = true
   node_config {
     workload_metadata_config {
       node_metadata = "GKE_METADATA_SERVER"
