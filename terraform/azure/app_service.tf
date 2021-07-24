@@ -38,6 +38,8 @@ resource azurerm_app_service "app-service1" {
     git_repo             = "terragoat"
     yor_trace            = "13be096d-c599-46e5-bf54-51c6e9732858"
   }
+  auth_settings {
+    enabled = true
   logs {
     detailed_error_messages_enabled = true
     failed_request_tracing_enabled = true
@@ -67,6 +69,8 @@ resource azurerm_app_service "app-service2" {
     git_repo             = "terragoat"
     yor_trace            = "ec8295ab-af68-4cff-b0f1-b0cf5eaf1b75"
   }
+  auth_settings {
+    enabled = true
   logs {
     detailed_error_messages_enabled = true
     failed_request_tracing_enabled = true
