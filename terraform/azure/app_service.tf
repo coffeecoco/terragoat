@@ -40,7 +40,10 @@ resource azurerm_app_service "app-service1" {
   }
   logs {
     failed_request_tracing_enabled = true
+  site_config {
+    ftps_state = "Disabled"
   }
+  client_cert_enabled = true
 }
 
 resource azurerm_app_service "app-service2" {
@@ -65,6 +68,9 @@ resource azurerm_app_service "app-service2" {
   }
   logs {
     failed_request_tracing_enabled = true
+  site_config {
+    ftps_state = "Disabled"
   }
+  client_cert_enabled = true
 }
 
