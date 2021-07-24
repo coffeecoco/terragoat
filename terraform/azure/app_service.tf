@@ -40,7 +40,13 @@ resource azurerm_app_service "app-service1" {
   }
   auth_settings {
     enabled = true
+  logs {
+    detailed_error_messages_enabled = true
+    failed_request_tracing_enabled = true
+  site_config {
+    ftps_state = "Disabled"
   }
+  client_cert_enabled = true
 }
 
 resource azurerm_app_service "app-service2" {
@@ -65,6 +71,12 @@ resource azurerm_app_service "app-service2" {
   }
   auth_settings {
     enabled = true
+  logs {
+    detailed_error_messages_enabled = true
+    failed_request_tracing_enabled = true
+  site_config {
+    ftps_state = "Disabled"
   }
+  client_cert_enabled = true
 }
 
