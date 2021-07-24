@@ -19,6 +19,7 @@ resource "google_container_cluster" "workload_cluster" {
       cidr_block = "0.0.0.0/0"
     }
   }
+  min_master_version = "1.12"
   enable_binary_authorization = true
 }
 
