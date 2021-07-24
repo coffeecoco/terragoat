@@ -9,7 +9,6 @@ resource "google_container_cluster" "workload_cluster" {
   location           = var.region
   initial_node_count = 1
 
-  enable_legacy_abac       = true
   monitoring_service       = "none"
   remove_default_node_pool = true
   network                  = google_compute_network.vpc.name
@@ -19,15 +18,6 @@ resource "google_container_cluster" "workload_cluster" {
       cidr_block = "0.0.0.0/0"
     }
   }
-  enable_shielded_nodes = true
-  node_config {
-    workload_metadata_config {
-      node_metadata = "GKE_METADATA_SERVER"
-    }
-  }
-  enable_intranode_visibility = true
-  min_master_version = "1.12"
-  enable_binary_authorization = true
 }
 
 resource google_container_node_pool "custom_node_pool" {
@@ -36,12 +26,5 @@ resource google_container_node_pool "custom_node_pool" {
 
   node_config {
     image_type = "Ubuntu"
-  }
-  node_config {
-    workload_metadata_config {
-      node_metadata = "GKE_METADATA_SERVER"
-    shielded_instance_config {
-      enable_secure_boot = true
-    }
   }
 }
