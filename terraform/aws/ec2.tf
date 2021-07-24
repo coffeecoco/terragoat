@@ -291,6 +291,8 @@ resource "aws_s3_bucket" "flowbucket" {
         sse_algorithm = "AES256"
       }
     }
+  versioning {
+    enabled = true
   }
 }
 
