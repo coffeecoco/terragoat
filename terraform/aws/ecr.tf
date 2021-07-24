@@ -17,6 +17,7 @@ resource aws_ecr_repository "repository" {
   encryption_configuration {
     encryption_type = "KMS"
   }
+  image_tag_mutability = "IMMUTABLE"
 }
 
 locals {
