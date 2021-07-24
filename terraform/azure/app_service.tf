@@ -41,6 +41,7 @@ resource azurerm_app_service "app-service1" {
   site_config {
     ftps_state = "Disabled"
   }
+  client_cert_enabled = true
 }
 
 resource azurerm_app_service "app-service2" {
@@ -66,5 +67,6 @@ resource azurerm_app_service "app-service2" {
   site_config {
     ftps_state = "Disabled"
   }
+  client_cert_enabled = true
 }
 
