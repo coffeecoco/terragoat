@@ -40,6 +40,8 @@ resource azurerm_app_service "app-service1" {
   }
   storage_account = {
     type = "AzureFiles"
+  site_config {
+    dotnet_framework_version = "v5.0"
   }
 }
 
@@ -65,6 +67,8 @@ resource azurerm_app_service "app-service2" {
   }
   storage_account = {
     type = "AzureFiles"
+  site_config {
+    dotnet_framework_version = "v5.0"
   }
 }
 
