@@ -39,6 +39,7 @@ resource azurerm_app_service "app-service1" {
     yor_trace            = "13be096d-c599-46e5-bf54-51c6e9732858"
   }
   logs {
+    detailed_error_messages_enabled = true
     failed_request_tracing_enabled = true
   site_config {
     ftps_state = "Disabled"
@@ -67,6 +68,7 @@ resource azurerm_app_service "app-service2" {
     yor_trace            = "ec8295ab-af68-4cff-b0f1-b0cf5eaf1b75"
   }
   logs {
+    detailed_error_messages_enabled = true
     failed_request_tracing_enabled = true
   site_config {
     ftps_state = "Disabled"
