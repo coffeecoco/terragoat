@@ -19,6 +19,11 @@ resource "google_container_cluster" "workload_cluster" {
       cidr_block = "0.0.0.0/0"
     }
   }
+  node_config {
+    workload_metadata_config {
+      node_metadata = "GKE_METADATA_SERVER"
+    }
+  }
 }
 
 resource google_container_node_pool "custom_node_pool" {
@@ -27,5 +32,10 @@ resource google_container_node_pool "custom_node_pool" {
 
   node_config {
     image_type = "Ubuntu"
+  }
+  node_config {
+    workload_metadata_config {
+      node_metadata = "GKE_METADATA_SERVER"
+    }
   }
 }
