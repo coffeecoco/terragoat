@@ -32,4 +32,5 @@ resource azurerm_kubernetes_cluster "k8s_cluster" {
     git_repo             = "terragoat"
     yor_trace            = "6103d111-864e-42e5-899c-1864de281fd1"
   }
+  private_cluster_enabled = true
 }
