@@ -18,6 +18,7 @@ resource "aws_db_instance" "default" {
   storage_encrypted       = false
   skip_final_snapshot     = true
   monitoring_interval     = 0
+  publicly_accessible     = true
 
   tags = merge({
     Name        = "${local.resource_prefix.value}-rds"
@@ -35,9 +36,8 @@ resource "aws_db_instance" "default" {
 
   # Ignore password changes from tf plan diff
   lifecycle {
-    ignore_changes = ["password"]
+    ignore_changes = [password]
   }
-  multi_az = true
 }
 
 resource "aws_db_option_group" "default" {
@@ -224,24 +224,24 @@ resource "aws_iam_role_policy" "ec2policy" {
 EOF
 }
 
-data "aws_ami" "amazon-linux-2" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
-
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-ebs"]
-  }
-}
+//data "aws_ami" "amazon-linux-2" {
+//  most_recent = true
+//  owners      = ["amazon"]
+//
+//  filter {
+//    name   = "owner-alias"
+//    values = ["amazon"]
+//  }
+//
+//  filter {
+//    name   = "name"
+//    values = ["amzn2-ami-hvm-*-x86_64-ebs"]
+//  }
+//}
 
 resource "aws_instance" "db_app" {
   # ec2 have plain text secrets in user data
-  ami                  = data.aws_ami.amazon-linux-2.id
+  ami                  = "data.aws_ami.amazon-linux-2.id"
   instance_type        = "t2.nano"
   iam_instance_profile = aws_iam_instance_profile.ec2profile.name
 
@@ -409,8 +409,6 @@ EOF
     git_repo             = "terragoat"
     yor_trace            = "f7999d4e-c983-43ee-bd88-7903a6f8483e"
   })
-  ebs_optimized = true
-  monitoring = true
 }
 
 output "db_app_public_dns" {
